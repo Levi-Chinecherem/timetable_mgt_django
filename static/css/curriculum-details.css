@@ -1,0 +1,15 @@
+
+.curr-container{
+    background-color: rgba(127, 255, 212, 0.137);
+    color: aliceblue;
+    max-width: 90%;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: wrap;
+}
+
+.curr-container h1 span{
+    color: rgba(224, 186, 158, 0.774);
+}
+

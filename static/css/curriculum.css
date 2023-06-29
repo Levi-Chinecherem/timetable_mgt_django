@@ -1,0 +1,33 @@
+
+.curr-container{
+    background-color: rgba(127, 255, 212, 0.137);
+    color: aliceblue;
+    max-width: 90%;
+    max-height: 500px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+
+.curr-container h1 span{
+    color: rgba(224, 186, 158, 0.774);
+}
+
+#curriculum-form{
+    margin-bottom: 20px;
+}
+
+.submit{
+    background-color: rgba(224, 186, 158, 0.774);
+    transition: all ;
+    padding: 5px 6px;
+    transition: all 0.3s linear;
+    border: none;
+    border-radius: 3px;
+}
+
+.submit:hover{
+    background-color: rgba(211, 119, 53, 0.651);
+    color: aliceblue;
+}

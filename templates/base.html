@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %} Computer Science Timetable {% endblock title %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        {% block styles %} {% endblock styles %}
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="index-container">
+            <nav>
+                <a class="title" href="{% url 'home' %}">Nac<span>os</span>ite Time<span>t</span>able</a>
+                <ul class="links">
+                    <li class="link-item"><a class="link" href="{% url 'timetable' %}">Time Table</a></li>
+                    <li class="link-item"><a class="link" href="{% url 'curriculum' %}">Curriculum</a></li>
+                    <li class="link-item"><a class="link" href="{% url 'lecturers' %}">Lectures</a></li>
+                </ul>
+            </nav>
+            <div class="content-container">
+                {% block content %} {% endblock content %}
+            </div>
+        </div>
+
+        <canvas id='myCanvas'></canvas>
+
+        <script src="{% static 'js/base.js' %}"></script>
+        {% block scripts %} 
+        {% endblock scripts %}
+    </body>
+</html>

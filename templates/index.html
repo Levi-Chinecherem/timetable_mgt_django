@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Computer Science Timetable {% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock styles %}
+
+    {% block content %}
+        
+        <div class="welcome">
+            <h2 class="author">Pro<span>sper Lal</span>ala</h2>
+            <p class="note"><br>
+                Welcome's you to this wonderful system, with my name already stated, 
+                <br> I'm a computer science student of the great Kenule Beeson Saro-Wiwa Polytechnic,
+                <br> this system happen to be my project research work, it's purposes: 
+                <br> - Have computer science time table at your finger tip.
+                <br> - Have your curriculum with you where ever you are.
+                <br> - Never forget who your lecturers are.
+                <br><br><b>Enjoy this process...!</b>
+            </p>
+        </div>
+    {% endblock content %}
+
+{% block scripts %} {% endblock scripts %}

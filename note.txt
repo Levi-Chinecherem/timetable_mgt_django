@@ -1,0 +1,2 @@
+remember to update the curriculum.js/html to make
+sure its getting the right data from db (courses)

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Curriculum Form {% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/curriculum.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="curr-container">
+    <h1>Computer <span>Science</span> Curriculum</h1>
+
+    <form id="curriculum-form">
+        <label for="level">Level:</label>
+        <select id="level" name="level">
+            <option value="">Select</option>
+            <option value="ND1">ND1</option>
+            <option value="ND2">ND2</option>
+            <option value="HND1">HND1</option>
+            <option value="HND2">HND2</option>
+        </select>
+
+        <label for="semester">Semester:</label>
+        <select id="semester" name="semester">
+            <option value="">Select</option>
+            <option value="1st">1st Semester</option>
+            <option value="2nd">2nd Semester</option>
+        </select>
+
+        <label for="course">Course:</label>
+        <select id="course" name="course">
+            <!-- Populate with available courses -->
+            {% for course in courses %}
+            <option value="{{ course.course_code }}">{{ course.course_code }}</option>
+            {% endfor %}
+        </select>
+
+        <input class="submit" type="submit" value="Get Curriculum">
+    </form>
+
+    <div class="dis-container">
+        <h1>Curriculum Details</h1>
+
+        <h2 id="curriculum-level"></h2>
+        <h2 id="curriculum-semester"></h2>
+        <h2 id="curriculum-course"></h2>
+
+        <h3>Topics and Details:</h3>
+        <ul id="curriculum-details">
+        </ul>
+    </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script>
+$(document).ready(function() {
+    $('#curriculum-form').on('submit', function(event) {
+        event.preventDefault();
+        
+        var level = $('#level').val();
+        var semester = $('#semester').val();
+        var course = $('#course').val();
+
+        $.ajax({
+            url: '/curriculum/',
+            type: 'GET',
+            data: {
+                'level': level,
+                'semester': semester,
+                'course': course
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    var curriculum = response.data;
+
+                    $('#curriculum-level').text('Level: ' + curriculum.level);
+                    $('#curriculum-semester').text('Semester: ' + curriculum.semester);
+                    $('#curriculum-course').text('Course: ' + curriculum.course);
+
+                    var curriculumDetails = $('#curriculum-details');
+                    curriculumDetails.empty();
+
+                    $.each(curriculum.topics, function(index, topic) {
+                        var listItem = $('<li></li>').html('<strong>' + topic.topic + '</strong>: ' + topic.detail);
+                        curriculumDetails.append(listItem);
+                    });
+                } else {
+                    $('#curriculum-level').empty();
+                    $('#curriculum-semester').empty();
+                    $('#curriculum-course').empty();
+                    $('#curriculum-details').empty().html('<p>No curriculum found.</p>');
+                }
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                console.log('Error:', errorThrown);
+            }
+        });
+    });
+});
+</script>
+
+{% endblock content %}

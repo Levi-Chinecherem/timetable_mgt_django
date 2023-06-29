@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Time Table Form {% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/timetable.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="time-container">
+    <h1>Computer <span>Science</span> Timetable</h1>
+
+    <form id="timetable-form">
+        <label for="level">Level:</label>
+        <select id="level" name="level">
+            <option value="">Select</option>
+            <option value="ND1">ND1</option>
+            <option value="ND2">ND2</option>
+            <option value="HND1">HND1</option>
+            <option value="HND2">HND2</option>
+        </select>
+
+        <label for="semester">Semester:</label>
+        <select id="semester" name="semester">
+            <option value="">Select</option>
+            <option value="1st">Semester 1</option>
+            <option value="2nd">Semester 2</option>
+        </select>
+
+        <input class="submit" type="submit" value="Get Timetable">
+    </form>
+
+    <table id="timetable-table">
+        <tr>
+            <th>Day</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Course</th>
+            <th>Lecturer</th>
+            <th>Semester</th>
+        </tr>
+    </table>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'js/timetable.js' %}"></script>
+{% endblock scripts %}

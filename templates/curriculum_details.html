@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Curriculum Details {% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/curriculum-details.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <div class="curr-container">
+        <h1>Curriculum Details</h1>
+
+        <h2>Level: {{ curriculum.level }}</h2>
+        <h2>Semester: {{ curriculum.semester }}</h2>
+        <h2>Course: {{ curriculum.course }}</h2>
+
+        <h3>Topics and Details:</h3>
+        <ul>
+            {% if curriculum.topic_1 %}
+            <li><strong>{{ curriculum.topic_1 }}</strong>: {{ curriculum.detail_1 }}</li>
+            {% endif %}
+            {% if curriculum.topic_2 %}
+            <li><strong>{{ curriculum.topic_2 }}</strong>: {{ curriculum.detail_2 }}</li>
+            {% endif %}
+            {% if curriculum.topic_3 %}
+            <li><strong>{{ curriculum.topic_3 }}</strong>: {{ curriculum.detail_3 }}</li>
+            {% endif %}
+            {% if curriculum.topic_4 %}
+            <li><strong>{{ curriculum.topic_4 }}</strong>: {{ curriculum.detail_4 }}</li>
+            {% endif %}
+            {% if curriculum.topic_5 %}
+            <li><strong>{{ curriculum.topic_5 }}</strong>: {{ curriculum.detail_5 }}</li>
+            {% endif %}
+            {% if curriculum.topic_6 %}
+            <li><strong>{{ curriculum.topic_6 }}</strong>: {{ curriculum.detail_6 }}</li>
+            {% endif %}
+            {% if curriculum.topic_7 %}
+            <li><strong>{{ curriculum.topic_7 }}</strong>: {{ curriculum.detail_7 }}</li>
+            {% endif %}
+            {% if curriculum.topic_8 %}
+            <li><strong>{{ curriculum.topic_8 }}</strong>: {{ curriculum.detail_8 }}</li>
+            {% endif %}
+            {% if curriculum.topic_9 %}
+            <li><strong>{{ curriculum.topic_9 }}</strong>: {{ curriculum.detail_9 }}</li>
+            {% endif %}
+            {% if curriculum.topic_10 %}
+            <li><strong>{{ curriculum.topic_10 }}</strong>: {{ curriculum.detail_10 }}</li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock content %}
+
+{% block scripts %} {% endblock scripts %}

@@ -15,27 +15,36 @@ def timetable_view(request):
     return render(request, 'timetable.html')
 
 def fetch_timetable(request):
-    level = request.GET.get('level')
-    semester = request.GET.get('semester')
+    if request.method == 'GET' and request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+        level = request.GET.get('level')
+        semester = request.GET.get('semester')
 
-    timetable = Timetable.objects.filter(course__level__name=level, semester=semester)
-    timetable_data = []
-    for entry in timetable:
-        entry_data = {
-            'day': entry.day,
-            'start_time': entry.start_time.strftime('%H:%M'),
-            'end_time': entry.end_time.strftime('%H:%M'),
-            'course': {
-                'name': entry.course.name
-            },
-            'lecturer': {
-                'name': entry.lecturer.name
-            },
-            'semester': entry.semester
-        }
-        timetable_data.append(entry_data)
+        if level and semester:
+            timetable = Timetable.objects.filter(course__level__name=level, semester=semester)
+        else:
+            timetable = None
 
-    return JsonResponse({'timetable': timetable_data})
+        if timetable:
+            timetable_data = []
+            for entry in timetable:
+                entry_data = {
+                    'day': entry.day,
+                    'start_time': entry.start_time.strftime('%H:%M'),
+                    'end_time': entry.end_time.strftime('%H:%M'),
+                    'course': {
+                        'name': entry.course.name
+                    },
+                    'lecturer': {
+                        'name': entry.lecturer.name
+                    },
+                    'semester': entry.semester
+                }
+                timetable_data.append(entry_data)
+                
+            print(timetable_data)
+            return JsonResponse({'success': True, 'timetable': timetable_data})
+        else:
+            return JsonResponse({'success': False, 'message': 'No Timetable found.'})
 
 # curriculum view
 def curriculum_view(request):

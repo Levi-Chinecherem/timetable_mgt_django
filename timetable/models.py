@@ -16,6 +16,7 @@ class Level(models.Model):
 class Course(models.Model):
     name = models.CharField(max_length=100)
     course_code = models.CharField(max_length=100)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f"Course: { self.course_code }"

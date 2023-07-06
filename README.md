@@ -1,5 +1,6 @@
 
-# Django Project
+# Timetable Management System with Django
+![Sample Image](https://github.com/Levi-Chinecherem/timetable_mgt_django/blob/master/sample.PNG)
 
 ## Overview
 This is a web application built with Django, a high-level Python web framework. It provides a platform for managing timetables, courses, and lecturers.

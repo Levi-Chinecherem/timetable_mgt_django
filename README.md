@@ -19,8 +19,8 @@ This is a web application built with Django, a high-level Python web framework. 
 
 ## Installation
 1. Clone the repository:
-
-   git clone https://github.com/your-username/django-project.git
+   ```
+   git clone https://github.com/Levi-Chinecherem/timetable_mgt_django.git
    ```
 2. Navigate to the project directory:
    ```
@@ -73,7 +73,9 @@ This project is licensed under the [MIT License](LICENSE).
 Contributions are welcome! Please follow the [contributing guidelines](CONTRIBUTING.md).
 
 ## Support
-For any issues or questions, please open an [issue](https://github.com/your-username/django-project/issues).
+For any issues or questions, please open an [issue](https://github.com/Levi-chinecherem/django-project/issues).
+
+Dont forget to give me credit if you ever use any part of this project
 
 ## Acknowledgements
 - [Django Documentation](https://docs.djangoproject.com/)

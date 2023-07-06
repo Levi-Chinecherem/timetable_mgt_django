@@ -46,19 +46,15 @@ class Timetable(models.Model):
         ('Friday', 'Friday'),
     ]
 
-    SEMESTER_CHOICES = [
-        ('Semester 1', 'Semester 1'),
-        ('Semester 2', 'Semester 2'),
-    ]
-
     BREAK_TIME = '12:00'
 
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     lecturer = models.ForeignKey(Lecturer, on_delete=models.CASCADE)
     day = models.CharField(max_length=10, choices=DAY_CHOICES)
     start_time = models.TimeField()
     end_time = models.TimeField()
-    semester = models.CharField(max_length=20, choices=SEMESTER_CHOICES)
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f"Timetable: { self.day } - { self.course } - { self.semester }"
